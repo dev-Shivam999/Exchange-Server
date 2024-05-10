@@ -38,7 +38,7 @@ export const val2 = async (req: CustomRequest, res: Response, next: NextFunction
 
 
         if (existingUser == null) {
-            return res.json({ success: false, message: "Product expire " })
+            return res.json({ success: false, message: "Login first " })
 
         } else {
             req.userId = userId;
