@@ -27,16 +27,16 @@ UserRouter.get('/data', (req: Request, res: Response) => {
 
 UserRouter.post('/Sign', Sign);
 UserRouter.post('/Login', Login);
+UserRouter.post('/Product',ProductInfo)
+UserRouter.get('/pro',Product)
+UserRouter.put('/Search',Search)
+UserRouter.put('/Result',Result)
 UserRouter.post('/pic',val2, upload.single('file') ,pic)
 UserRouter.get('/profile',val2,profile)
-UserRouter.get('/pro',Product)
 UserRouter.post('/Cart',val2,Cart)
-UserRouter.post('/Product',ProductInfo)
 UserRouter.post('/CheckCart',val2,CheckCart)
 UserRouter.post('/Number',val2,Number)
 UserRouter.get('/GetCart',val2,GetCart)
-UserRouter.put('/Search',Search)
-UserRouter.put('/Result',Result)
 
 
 
