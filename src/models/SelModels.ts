@@ -62,6 +62,13 @@ required:true,
   ProductImg:{
     type: String,
     default:""
+  },
+  District:{
+    type:String,
+    required:true,
+  },State:{
+    type:String,
+    required:true,
   }
     
 })

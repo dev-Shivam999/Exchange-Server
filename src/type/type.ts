@@ -1,4 +1,4 @@
-import { SessionData } from "express-session";
+
 import { JwtPayload } from "jsonwebtoken";
 import mongoose from "mongoose";
 
@@ -48,10 +48,9 @@ export interface SelModel{
     ProductType:string,
     ProductDiscretion:string,
     ProductImg:string,
-    userId: mongoose.Schema.Types.ObjectId
+    userId: mongoose.Schema.Types.ObjectId,
+    State:string,
+    District:string
 }
 
 
-interface MySession extends SessionData {
-    username?: string; // Define the properties you'll be using in the session
-}
