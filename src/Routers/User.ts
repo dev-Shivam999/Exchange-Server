@@ -13,6 +13,7 @@ import { Number } from '../controller/UserController/Number';
 import { Search } from '../controller/UserController/Search';
 import { Result } from '../controller/UserController/Result';
 import { val2 } from '../utils/utils1';
+import { Edit } from '../controller/UserController/Edit';
 
 
 export const UserRouter = express.Router();
@@ -37,6 +38,8 @@ UserRouter.post('/Cart',val2,Cart)
 UserRouter.post('/CheckCart',val2,CheckCart)
 UserRouter.post('/Number',val2,Number)
 UserRouter.get('/GetCart',val2,GetCart)
+UserRouter.post('/EditsProfile',val2,Edit)
+
 
 
 

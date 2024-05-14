@@ -24,12 +24,14 @@ export const Pro = async (req: CustomRequest, res: Response) => {
                 ProductType: de.ProductType,
                 ProductDiscretion: de.ProductDiscretion
             })
+        
 
             await SelUs.findByIdAndUpdate({ _id: userId }, { $push: { Product: Product } })
 
             return res.json({ success: true, message: 'Product updated successfully', id: Product._id })
 
         } else {
+            
             return res.json({ success: false, message: 'LOGIN first' })
 
         }

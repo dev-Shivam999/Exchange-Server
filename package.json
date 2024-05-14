@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "concurrently \"tsc -w \" \" nodemon dist/index.js\"",
-    "start": "tsc -w && nodemon dist/index.js"
+    "start": "npx tsc  && nodemon dist/index.js"
 
   },
   "keywords": [],

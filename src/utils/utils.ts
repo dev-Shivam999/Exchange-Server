@@ -10,6 +10,7 @@ config()
 export const val = async (req: CustomRequest, res: Response, next: NextFunction) => {
 
     const token: string | undefined = await req.cookies.token;
+  
     
     if (token == undefined) {
         return res.json({ success: false, message: "Login first" })
@@ -33,17 +34,20 @@ export const val = async (req: CustomRequest, res: Response, next: NextFunction)
 
         let userId = String(decodedToken.userId);
        
+      
         
 
         const existingUser: s | null = await SelUs.findById( userId );
     
      
+     
         
         if (existingUser == null) {
-            return res.json({ success: false, message: "Product expire " })
+            return res.json({ success: false, message: "login  " })
             
         }else{
             req.userId = userId;
+            
             next()
         }
     }

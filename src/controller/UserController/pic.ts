@@ -1,11 +1,10 @@
 import multer from "multer";
 import path from "path";
 import { v2 as cloudinary } from "cloudinary";
-import { Request, Response } from "express";
+import {  Response } from "express";
 import { Picture } from "../../models/UserModels";
 import { su } from "../../type/type";
 import fs from "fs";
-import Jwt, { JwtPayload } from "jsonwebtoken";
 import { CustomRequest } from "../../utils/utils";
 
 const storage = multer.diskStorage({
@@ -34,9 +33,12 @@ export const pic = async (req: CustomRequest, res: Response) => {
         const result = await cloudinary.uploader.upload(req.file.path);
         fs.unlinkSync(req.file.path);
         // Find the Picture document with the user ID
-        const existingPicture: su | null = await Picture.findOne({ userId });
+      
+        
+        const existingPicture: su | null = await Picture.findOneAndUpdate( {userId} );
 
         if (existingPicture) {
+            
             // If the picture exists, update it
             await cloudinary.uploader.destroy(existingPicture.picId);
             await Picture.findByIdAndUpdate(existingPicture._id, { $set: { pic: result.secure_url } });

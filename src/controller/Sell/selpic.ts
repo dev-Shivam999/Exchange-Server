@@ -23,7 +23,7 @@ cloudinary.config({
 
 
 export const SelPic = async (req: CustomRequest, res: Response) => {
-    console.log(process.env.CloudApi);
+    
     try {
 
 
