@@ -5,8 +5,8 @@
   "main": ".dist/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "concurrently \"npx  tsc \" \" node dist/index.js\"",
-    "start": "npx tsc  && node dist/index.js"
+    "build": " tsc -w",
+    "start": "node dist/index.js"
 
   },
   "keywords": [],
