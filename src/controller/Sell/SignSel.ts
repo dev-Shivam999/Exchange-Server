@@ -44,7 +44,11 @@ export const SignSel = async (req: Request<{}, {}, UserSel>, res: Response) => {
             const token = jwt.sign({ userId: newUser._id }, `${process.env.SECRET}`);
 
 
-            res.cookie("token", token)
+            return res.cookie("token", token, {
+                httpOnly: true,
+                sameSite: true,
+                expires: new Date(Date.now() + 60000 * 60000)
+            })
 
             // .cookie("token", token)
             .json({ success: true,message:"user crete " });

@@ -12,7 +12,7 @@ export const Search = async (req: Request, res: Response) => {
 
     const results = await SelModel.find({ ProductDiscretion: { $regex: String(searchQuery), $options: 'i' } }); // Case-insensitive search
 
-    res.json({ message: results.map(result => {return {name:result.ProductName,id:result._id}}) })
+    res.json({ message: results.map(result => {return {name:result.ProductTittle,id:result._id}}) })
     
 
     
