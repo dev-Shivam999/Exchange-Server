@@ -5,7 +5,7 @@
   "main": ".dist/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "concurrently \"tsc -w \" \" nodemon dist/index.js\"",
+    "build": "concurrently \"npx  tsc \" \" node dist/index.js\"",
     "start": "npx tsc  && nodemon dist/index.js"
 
   },
