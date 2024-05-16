@@ -1,0 +1,23 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.SelRoute = void 0;
+const express_1 = __importDefault(require("express"));
+const SignSel_1 = require("../controller/Sell/SignSel");
+const Lgin_1 = require("../controller/Sell/Lgin");
+const Product_1 = require("../controller/Sell/Product");
+const Pro_1 = require("../controller/Sell/Pro");
+const selpic_1 = require("../controller/Sell/selpic");
+const utils_1 = require("../utils/utils");
+const DeleteProduct_1 = require("../controller/Sell/DeleteProduct");
+const Edit_1 = require("../controller/Sell/Edit");
+exports.SelRoute = express_1.default.Router();
+exports.SelRoute.post('/Sign', SignSel_1.SignSel);
+exports.SelRoute.post('/Login', Lgin_1.LoginSel);
+exports.SelRoute.get('/Product', utils_1.val, Product_1.Product);
+exports.SelRoute.post('/Pro', utils_1.val, Pro_1.Pro);
+exports.SelRoute.post('/DeleteProduct', utils_1.val, DeleteProduct_1.DeleteProduct);
+exports.SelRoute.post('/Edit', utils_1.val, Edit_1.Edit);
+exports.SelRoute.post('/SelPic', utils_1.val, selpic_1.uploads.single('file'), selpic_1.SelPic);
