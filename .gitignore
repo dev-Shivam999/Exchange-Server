@@ -5,7 +5,7 @@ node_modules/
 .env
 
 # Build output
-
+dist/
 
 # IDE/Editor specific files
 .vscode/
