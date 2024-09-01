@@ -3,42 +3,52 @@ import { SelModel, SelUs } from "../../models/SelModels";
 import { SelModel as s } from "../../type/type";
 import { CustomRequest } from "../../utils/utils";
 import { AddSchema } from "../../type/zod";
+import { UserSchema } from "../../models/UserModels";
 
 export const Pro = async (req: CustomRequest, res: Response) => {
 
+    
+
+    const de: s = req.body
     const validationResult = AddSchema.safeParse(req.body);
+
     if (!validationResult.success) {
+        console.log(validationResult.error.issues[0].message);
+        
         return res.json({ success: false, message: validationResult.error.issues[0].message });
     }
+   
+    
     try {
 
 
         const userId = req.userId
 
-        const de: s = req.body
 
 
 
 
 
-        const val = await SelUs.findById(userId)
+        const val = await UserSchema.findByIdAndUpdate({ _id: userId }, { $set: { Marched :true}})
+
 
 
         if (val) {
 
             const Product = await SelModel.create({
                 userId: userId,
-                ProductName: de.ProductName,
-                ProductTittle: de.ProductTittle,
                 ProductPrice: de.ProductPrice,
                 ProductType: de.ProductType,
                 ProductDiscretion: de.ProductDiscretion,
-                District: de.District,
-                State: de.State
+                District: de.ProductCity,
+                SubLocation:de.SubLoc,
+                ProductSale: de.ProductSale
             })
 
 
-            await SelUs.findByIdAndUpdate({ _id: userId }, { $push: { Product: Product } })
+
+
+            await UserSchema.findByIdAndUpdate({ _id: userId }, { $push: { Product: Product } })
 
             return res.json({ success: true, message: 'Product updated successfully', id: Product._id })
 

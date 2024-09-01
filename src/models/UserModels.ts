@@ -1,9 +1,12 @@
 import mongoose, { Model } from "mongoose";
 import { Uc, User, su } from "../type/type";
 
-export type UserSC=User&mongoose.Document
+export type UserSC = User & mongoose.Document
 const Client = new mongoose.Schema({
-
+    pic: {
+        type: String,
+        required: false,
+    },
     name: {
         type: String,
         required: true
@@ -21,17 +24,24 @@ const Client = new mongoose.Schema({
     password: {
         type: String,
         required: true,
+    },
+    Marched:{
+        type:Boolean,
+        default: false
+    },Product:{
+        type:[],
+        default:[]
     }
 
 })
-const pic=new mongoose.Schema({
-    UserId:{
+const pic = new mongoose.Schema({
+    UserId: {
         type: mongoose.Schema.Types.ObjectId,
-        ref:"UserSchema",
+        ref: "UserSchema",
         required: true,
     },
-    
-     pic: {
+
+    pic: {
         type: String,
         required: true
     },
@@ -41,17 +51,17 @@ const pic=new mongoose.Schema({
 
     },
 })
-const car=new mongoose.Schema({
-    userId:{
+const car = new mongoose.Schema({
+    userId: {
         type: mongoose.Schema.Types.ObjectId,
         required: true,
     },
-    product:{
-        type:[],
-        default:{}
+    product: {
+        type: [],
+        default: {}
     }
 })
-export const UserSchema: Model<UserSC> = mongoose.model<UserSC>('UserSchema',Client)
+export const UserSchema: Model<UserSC> = mongoose.model<UserSC>('UserSchema', Client)
 
 export const Picture: Model<su> = mongoose.model<su>('Picture', pic)
 export const UserCart: Model<Uc> = mongoose.model<Uc>('Cart', car)

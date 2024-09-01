@@ -3,10 +3,14 @@ import { JwtPayload } from "jsonwebtoken";
 import mongoose from "mongoose";
 
 export interface User{
+    _id: string
+    Marched: boolean;
+    pic: string,
     name:string,
     email:string,
     number:string,
     password:string,
+    Product: SelProduct[]
 }
 export interface UserSel{
     name:string,
@@ -42,15 +46,14 @@ export interface p extends JwtPayload{
 export type SelProduct=SelModel&mongoose.Document
 
 export interface SelModel{
-    ProductName:string,
     ProductPrice:string,
-    ProductTittle:string,
     ProductType:string,
     ProductDiscretion:string,
-    ProductImg:string,
+    ProductImg:string[],
     userId: mongoose.Schema.Types.ObjectId,
-    State:string,
-    District:string
+    ProductSale:string
+    ProductCity:string
+    SubLoc:string
 }
 
 

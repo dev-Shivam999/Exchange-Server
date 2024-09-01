@@ -1,23 +1,26 @@
 import { Request, Response } from "express";
-import { User, userSchemaZod } from "../../type/zod";
+import {  userSchemaZod } from "../../type/zod";
 import { UserSC, UserSchema } from "../../models/UserModels";
 import bcrypt from "bcrypt"
 import jwt from 'jsonwebtoken'
+import { User } from "../../type/type";
 
 export const Sign = async (req: Request<{}, {}, User>, res: Response) => {
     try {
-        const { name, password, email, number } = req.body;
+        const { name, password, email, number,pic } = req.body;
 
+        console.log(pic);
+        
         const validationResult = userSchemaZod.safeParse(req.body);
 
         if (!validationResult.success) {
             return res.json({ error: true, message: validationResult.error.issues[0].message });
         }
 
-        const existingUser: User | null = await UserSchema.findOne({ email: email });
-        const existingUser2: User | null = await UserSchema.findOne({ number: number });
+        const existingUser: User | null = await UserSchema.findOne({ email: email,number: number});
+     
 
-        if (existingUser||existingUser2) {
+        if (existingUser) {
             return res.json({ error: true, message: "User already exists" });
         }
 
@@ -29,10 +32,12 @@ export const Sign = async (req: Request<{}, {}, User>, res: Response) => {
             const hash = bcrypt.hashSync(password, 10);
 
             const newUser: UserSC = await UserSchema.create({
+                pic:pic,
                 name: name,
                 password: hash,
                 email: email,
-                number: number
+                number: number,
+                
             });
 
          

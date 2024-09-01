@@ -1,13 +1,16 @@
 import { NextFunction, Request, Response } from "express";
 import jwt, { JwtPayload } from "jsonwebtoken";
-
+import { s } from "../type/type";
+export interface CustomRequest extends Request {
+    userId?: string; // userId property is optional
+}
 import { config } from "dotenv";
-import { UserSC, UserSchema } from "../models/UserModels";
-import { CustomRequest } from "./utils";
+import { UserSchema } from "../models/UserModels";
 config()
 export const val2 = async (req: CustomRequest, res: Response, next: NextFunction) => {
 
     const token: string | undefined = await req.cookies.token;
+
 
     if (token == undefined) {
         return res.json({ success: false, message: "Login first" })
@@ -33,15 +36,18 @@ export const val2 = async (req: CustomRequest, res: Response, next: NextFunction
 
 
 
-        const existingUser: UserSC | null = await UserSchema.findById(userId);
+
+        const existingUser: s | null = await UserSchema.findById(userId);
+
 
 
 
         if (existingUser == null) {
-            return res.json({ success: false, message: "Login first " })
+            return res.json({ success: false, message: "login  " })
 
         } else {
             req.userId = userId;
+
             next()
         }
     }

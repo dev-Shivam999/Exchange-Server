@@ -1,6 +1,6 @@
 import mongoose, { Model } from "mongoose";
 import { SelProduct, s } from "../type/type";
-import { boolean } from "zod";
+import { boolean, string } from "zod";
 
 
 
@@ -39,14 +39,11 @@ const SelUser=new mongoose.Schema({
     required: true,
   },
 
-  ProductName:{
-    type:String,
-    required:true,
-  },
-  ProductTittle:{
-    type:String,
-    required:true,
-  },
+ProductSale:{
+type:String,
+required: true,
+},
+ 
   ProductPrice:{
     type:String,
     required:true,
@@ -60,13 +57,14 @@ type:String,
 required:true,
   },
   ProductImg:{
-    type: String,
+    type: [],
     default:""
   },
   District:{
     type:String,
     required:true,
-  },State:{
+  },
+  SubLocation:{
     type:String,
     required:true,
   }

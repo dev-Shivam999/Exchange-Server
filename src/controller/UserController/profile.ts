@@ -2,6 +2,7 @@ import {  Response } from "express";
 import { Picture, UserSC, UserSchema } from "../../models/UserModels";
 import { su } from "../../type/type";
 import { CustomRequest } from "../../utils/utils";
+import { log } from "console";
 
 export const profile = async (req: CustomRequest,res:Response)=>{
     
@@ -13,32 +14,31 @@ export const profile = async (req: CustomRequest,res:Response)=>{
         const existingUser: UserSC | null = await UserSchema.findById(userId);
        
         
-        const Pic:su | null = await Picture.findOne({ UserId: existingUser?._id })
+
+        
       
         
         
         if (existingUser ) {
-          const url=Pic?.pic
+        
+          
 
-          // Additional values to send
           const additionalValues = {
             _id: existingUser._id,
             name: existingUser.name,
             number: existingUser.number,
-            email: existingUser.email
+            email: existingUser.email,
+            pic:existingUser.pic,
+            product: existingUser.Product
+           
           };
 
-          // Merge additional values with URL and existing user data
-          const responseData = {
-            // Convert existingUser to plain object
-            url,
-            ...additionalValues,
-          };
+        
 
      
        
 
-              return res.json({ success: true, message: responseData })
+              return res.json({ success: true, message: additionalValues })
           } else {
               return res.json({ success: false, message: "login sl first" })
 
