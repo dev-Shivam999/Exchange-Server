@@ -6,7 +6,7 @@ export const Product = async (req: Request, res: Response) => {
 
     
 
-    const D: SelProduct[] | null = await SelModel.find({})
+    const D: SelProduct[] | null = await SelModel.find({verify:true})
 
     if (D) {
         return res.json({ success: true, message: D })

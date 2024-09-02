@@ -27,10 +27,9 @@ const Client = new mongoose.Schema({
     },
     Marched:{
         type:Boolean,
-        default: false
-    },Product:{
-        type:[],
-        default:[]
+        default:false
+    }, Product: {
+        type:[],default:[]
     }
 
 })

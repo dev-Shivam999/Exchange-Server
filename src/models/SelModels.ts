@@ -24,9 +24,9 @@ const ClientSel = new mongoose.Schema({
     type: String,
     required: true,
   },
-  Product:{
-    type: [],
-    default: []
+  Product: {
+    type:[],
+    default: [],
   }
  
 
@@ -38,7 +38,10 @@ const SelUser=new mongoose.Schema({
     ref:"ClientSel",
     required: true,
   },
-
+verify:{
+  type:Boolean,
+  default: false
+},
 ProductSale:{
 type:String,
 required: true,

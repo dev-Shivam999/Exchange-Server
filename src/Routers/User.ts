@@ -3,7 +3,6 @@ import { Sign } from '../controller/UserController/Sign';
 import { pic, upload } from '../controller/UserController/pic';
 import { Login } from '../controller/UserController/Lgin';
 import { profile } from '../controller/UserController/profile';
-import { val } from '../utils/utils';
 import { Product } from '../controller/UserController/ProductU';
 import { ProductInfo } from '../controller/UserController/ProductInfo';
 import { Cart } from '../controller/UserController/Cart';
