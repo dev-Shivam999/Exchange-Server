@@ -30,8 +30,12 @@ const Client = new mongoose.Schema({
         default:false
     }, Product: {
         type:[],default:[]
-    }
+    },
 
+    Private:{
+        type:Boolean,
+        default:false
+    }
 })
 const pic = new mongoose.Schema({
     UserId: {

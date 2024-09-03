@@ -4,6 +4,7 @@ import mongoose from "mongoose";
 
 export interface User{
     _id: string
+    Private: boolean
     Marched: boolean;
     pic: string,
     name:string,

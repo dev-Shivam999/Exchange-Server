@@ -7,7 +7,7 @@ export const Edit = async (req: CustomRequest, res: Response) => {
         const { p } = req.body
         const userId = req.userId
         
-       const data= await UserSchema.findByIdAndUpdate(userId, { $set: { name: p.name, email: p.email, number: p.number } })
+        await UserSchema.findByIdAndUpdate(userId, { $set: { name: p.name, email: p.email, number: p.number,pic:p.pic,Private:p.Private } })
      
        return res.json({success:true})
        

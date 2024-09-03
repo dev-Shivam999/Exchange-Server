@@ -1,8 +1,6 @@
 import {  Response } from "express";
-import { Picture, UserSC, UserSchema } from "../../models/UserModels";
-import { su } from "../../type/type";
+import {  UserSC, UserSchema } from "../../models/UserModels";
 import { CustomRequest } from "../../utils/utils";
-import { log } from "console";
 
 export const profile = async (req: CustomRequest,res:Response)=>{
     
@@ -21,7 +19,7 @@ export const profile = async (req: CustomRequest,res:Response)=>{
         
         if (existingUser ) {
         
-          
+          const pro=existingUser.Product.filter(p=>p.verify)
 
           const additionalValues = {
             _id: existingUser._id,
@@ -29,7 +27,8 @@ export const profile = async (req: CustomRequest,res:Response)=>{
             number: existingUser.number,
             email: existingUser.email,
             pic:existingUser.pic,
-            product: existingUser.Product
+            product: pro,
+            Private:existingUser.Private
            
           };
 

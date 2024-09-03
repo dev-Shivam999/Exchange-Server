@@ -7,9 +7,9 @@ import { User } from "../../type/type";
 
 export const Sign = async (req: Request<{}, {}, User>, res: Response) => {
     try {
-        const { name, password, email, number,pic } = req.body;
+        const { name, password, email, number,pic ,Private} = req.body;
 
-        console.log(pic);
+       
         
         const validationResult = userSchemaZod.safeParse(req.body);
 
@@ -17,8 +17,11 @@ export const Sign = async (req: Request<{}, {}, User>, res: Response) => {
             return res.json({ error: true, message: validationResult.error.issues[0].message });
         }
 
-        const existingUser: User | null = await UserSchema.findOne({ email: email,number: number});
+        const existingUser: User | null = await UserSchema.findOne({
+            $or: [{ email: email }, { number: number }]
+        });
      
+        
 
         if (existingUser) {
             return res.json({ error: true, message: "User already exists" });
@@ -37,6 +40,7 @@ export const Sign = async (req: Request<{}, {}, User>, res: Response) => {
                 password: hash,
                 email: email,
                 number: number,
+                Private:Private
                 
             });
 
