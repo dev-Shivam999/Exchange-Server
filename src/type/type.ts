@@ -56,6 +56,7 @@ export interface SelModel{
     ProductSale:string
     ProductCity:string
     SubLoc:string
+    ProductName:string
 }
 
 

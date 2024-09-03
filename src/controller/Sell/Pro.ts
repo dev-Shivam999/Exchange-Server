@@ -42,6 +42,7 @@ export const Pro = async (req: CustomRequest, res: Response) => {
                 ProductDiscretion: de.ProductDiscretion,
                 District: de.ProductCity,
                 SubLocation:de.SubLoc,
+                ProductName:de.ProductName,
                 ProductSale: de.ProductSale
             })
 

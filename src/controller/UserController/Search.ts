@@ -11,18 +11,20 @@ export const Search = async (req: Request, res: Response) => {
     const searchQuery: string = queryParams.q;
     const {search}=req.body
     
-    const minPrice = search.range - ((search.range) / 2)
-    const maxPrice=search.range+((search.range)/2)
+    const minPrice = search.range - (search.range)/2
+    const maxPrice=search.range+2*(search.range)
     const locationQuery = search.location
     const buyOrRent=search.type
 
 
     const results = await SelModel.find({ $and: [
-    { ProductDiscretion: { $regex: String(searchQuery), $options: 'i' } },
+    { ProductName: { $regex: String(searchQuery), $options: 'i' } },
         { ProductPrice: { $gte: minPrice, $lte: maxPrice } },
         { District: { $regex: String(locationQuery), $options: 'i' } },
-        { ProductType:  { $in: [buyOrRent] } }
+        { ProductType:  { $in: [buyOrRent] } },
+        {verify:true}
   ] }); 
+
 
     res.json({ message: results })
     

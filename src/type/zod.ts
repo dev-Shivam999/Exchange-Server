@@ -16,13 +16,13 @@ export const LoginSchema = z.object({
 
     password: z.string().min(5, "password is required 5 letter ")
 })
- 
+
 export const AddSchema = z.object({
 
-  
+    ProductName: z.string().trim().min(3, "Name must be required"),
     ProductPrice: z.string().trim().min(1, "price is required"),
     ProductDiscretion: z.string().trim().min(20, "discretion is required 20 word"),
     SubLoc: z.string().trim().min(3, "Sub Location is required "),
-    })
+})
 export type UserLogin = z.infer<typeof LoginSchema>;
 export type AddPro = z.infer<typeof AddSchema>;

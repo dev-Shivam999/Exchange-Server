@@ -28,7 +28,8 @@ export const profile = async (req: CustomRequest,res:Response)=>{
             email: existingUser.email,
             pic:existingUser.pic,
             product: pro,
-            Private:existingUser.Private
+            Private:existingUser.Private,
+            ProductName:existingUser.Product
            
           };
 

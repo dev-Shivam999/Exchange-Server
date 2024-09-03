@@ -70,6 +70,9 @@ required:true,
   SubLocation:{
     type:String,
     required:true,
+  },ProductName:{
+    type:String,
+    required:true,
   }
     
 })
