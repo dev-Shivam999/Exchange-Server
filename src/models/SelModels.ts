@@ -25,58 +25,62 @@ const ClientSel = new mongoose.Schema({
     required: true,
   },
   Product: {
-    type:[],
+    type: [],
     default: [],
   }
- 
+
 
 })
 
-const SelUser=new mongoose.Schema({
-  userId:{
+const SelUser = new mongoose.Schema({
+  userId: {
     type: mongoose.Schema.Types.ObjectId,
-    ref:"ClientSel",
+    ref: "ClientSel",
     required: true,
   },
-verify:{
-  type:Boolean,
-  default: false
-},
-ProductSale:{
-type:String,
-required: true,
-},
- 
-  ProductPrice:{
-    type:String,
-    required:true,
+  username:{
+    type: mongoose.Schema.Types.String,
+    require:true
   },
-  ProductType:{
-    type:String,
-    required:true,
+  verify: {
+    type: Boolean,
+    default: false
   },
-  ProductDiscretion:{
-type:String,
-required:true,
+  ProductSale: {
+    type: String,
+    required: true,
   },
-  ProductImg:{
+
+  ProductPrice: {
+    type: String,
+    required: true,
+  },
+  ProductType: {
+    type: String,
+    required: true,
+  },
+  ProductDiscretion: {
+    type: String,
+    required: true,
+  },
+  ProductImg: {
     type: [],
-    default:""
+    default: ""
   },
-  District:{
-    type:String,
-    required:true,
+  District: {
+    type: String,
+    required: true,
   },
-  SubLocation:{
-    type:String,
-    required:true,
-  },ProductName:{
-    type:String,
-    required:true,
+  SubLocation: {
+    type: String,
+    required: true,
+  }, ProductName: {
+    type: String,
+    required: true,
   }
-    
+
 })
 
 
-export const SelModel: Model<SelProduct> = mongoose.model<SelProduct>('SelModel',SelUser);
+export const SelModel: Model<SelProduct> = mongoose.model<SelProduct>('SelModel', SelUser);
 export const SelUs: Model<s> = mongoose.model<s>('SelUs', ClientSel);

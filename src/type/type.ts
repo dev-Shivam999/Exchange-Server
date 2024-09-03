@@ -47,6 +47,7 @@ export interface p extends JwtPayload{
 export type SelProduct=SelModel&mongoose.Document
 
 export interface SelModel{
+    username: string
     verify: boolean,
     ProductPrice:string,
     ProductType:string,
