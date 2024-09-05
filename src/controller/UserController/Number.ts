@@ -1,13 +1,13 @@
 import { Request, Response } from "express";
-import { SelUs } from "../../models/SelModels";
 import { s } from "../../type/type";
+import { UserSchema } from "../../models/UserModels";
 
 export const Number = async (req: Request, res: Response)=>{
 
     const {userId}=req.body
 
     
-    const data:s|null=await SelUs.findById(userId)
+    const data:s|null=await UserSchema.findById(userId)
     
     
     if (data) {

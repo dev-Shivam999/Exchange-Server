@@ -38,6 +38,10 @@ const SelUser = new mongoose.Schema({
     ref: "ClientSel",
     required: true,
   },
+  Private:{
+type:mongoose.Schema.Types.Boolean,
+default: false,
+  },
   username:{
     type: mongoose.Schema.Types.String,
     require:true

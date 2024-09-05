@@ -36,6 +36,7 @@ export const Pro = async (req: CustomRequest, res: Response) => {
         if (val) {
 
             const Product = await SelModel.create({
+                Private:val.Private,
                 userId: userId,
                 username:val.name,
                 ProductPrice: de.ProductPrice,
