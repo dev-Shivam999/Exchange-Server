@@ -54,20 +54,20 @@ const pic = new mongoose.Schema({
 
     },
 })
-const car = new mongoose.Schema({
-    userId: {
-        type: mongoose.Schema.Types.ObjectId,
-        required: true,
-    },
-    product: {
-        type: [],
-        default: {}
-    }
-})
+// const car = new mongoose.Schema({
+//     userId: {
+//         type: mongoose.Schema.Types.ObjectId,
+//         required: true,
+//     },
+//     product: {
+//         type: [],
+//         default: {}
+//     }
+// })
 export const UserSchema: Model<UserSC> = mongoose.model<UserSC>('UserSchema', Client)
 
 export const Picture: Model<su> = mongoose.model<su>('Picture', pic)
-export const UserCart: Model<Uc> = mongoose.model<Uc>('Cart', car)
+// export const UserCart: Model<Uc> = mongoose.model<Uc>('Cart', car)
 
 
 

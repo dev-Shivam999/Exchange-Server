@@ -1,38 +1,38 @@
-import { Request, Response } from "express";
-import { UserCart } from "../../models/UserModels";
-import { UserCart as u } from "../../type/type";
-import jwt, { JwtPayload } from "jsonwebtoken";
-import { log } from "console";
-import { CustomRequest } from "../../utils/utils";
+// import { Request, Response } from "express";
+// import { UserCart } from "../../models/UserModels";
+// import { UserCart as u } from "../../type/type";
+// import jwt, { JwtPayload } from "jsonwebtoken";
+// import { log } from "console";
+// import { CustomRequest } from "../../utils/utils";
 
-export const CheckCart = async (req: CustomRequest, res: Response) => {
+// export const CheckCart = async (req: CustomRequest, res: Response) => {
 
-    const { id } = req.body
+//     const { id } = req.body
    
     
  
         
-            const userId =req.userId;
+//             const userId =req.userId;
             
-            const data: u | null = await UserCart.findOne({userId:userId})
+//             const data: u | null = await UserCart.findOne({userId:userId})
             
-          if (data) {
+//           if (data) {
               
 
-            const val=data.product.filter(p=>p._id==id)
+//             const val=data.product.filter(p=>p._id==id)
             
-            if (val.length > 0) {
-                res.json({success: true})
-            }else{
-                res.json({success: false})
+//             if (val.length > 0) {
+//                 res.json({success: true})
+//             }else{
+//                 res.json({success: false})
 
-            }
-          }else{
+//             }
+//           }else{
 
-              res.json({ success: false })
-          }
+//               res.json({ success: false })
+//           }
 
            
 
 
-}
+// }
