@@ -27,7 +27,7 @@ app.use('/user', UserRouter)
 app.use('/Sel', SelRoute)
 
 
-const Port = process.env.PORT||4000
+const Port = process.env.PORT||3000
 
 
 app.listen(Port,()=>{
