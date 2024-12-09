@@ -9,7 +9,6 @@ import { config } from 'dotenv';
 config()
 
 const app = express();
-Db()
 app.use(cors({
     credentials:true,
     origin:`${process.env.Url}`
@@ -19,6 +18,7 @@ app.use(session({
     resave:false,
     saveUninitialized:true
 }))
+Db()
 app.use(express.json())
 app.use(cookieParser())
 app.use('/user', UserRouter)
