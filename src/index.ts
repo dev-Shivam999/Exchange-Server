@@ -12,7 +12,7 @@ const app = express();
 Db()
 app.use(cors({
     credentials:true,
-    origin: "*"
+    origin: "http://localhost:5173"
 }))
 app.use(session({
     secret: `${process.env.SECRET}`,
