@@ -6,10 +6,10 @@ import cors from 'cors'
 import { SelRoute } from './Routers/Sel';
 import session from "express-session"
 import { config } from 'dotenv';
-Db()
 config()
 
 const app = express();
+Db()
 app.use(cors({
     credentials:true,
     origin: ["http://localhost:5173","http://localhost:5174"]
