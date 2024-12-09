@@ -13,6 +13,8 @@ app.use(cors({
     credentials:true,
     origin:`${process.env.Url}`
 }))
+console.log(process.env.Url);
+
 app.use(session({
     secret: `${process.env.SECRET}`,
     resave:false,
