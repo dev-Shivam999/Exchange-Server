@@ -30,7 +30,7 @@ if (cluster.isPrimary) {
     const app = express();
     app.use(cors({
         credentials: true,
-        origin: `${process.env.Url}`
+        origin: `*`
     }))
     console.log(process.env.Url);
 
