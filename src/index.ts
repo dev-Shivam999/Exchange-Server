@@ -17,6 +17,7 @@ config()
         credentials: true,
         origin: `${ process.env.Url }`
     }))
+console.log(`${process.env.Url}`);
 
 
     Db()
