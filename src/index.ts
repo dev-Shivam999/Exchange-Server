@@ -10,29 +10,13 @@ import cluster from 'cluster';
 import os from 'os';
 config()
 
-const totalCpus = os.cpus().length;
-console.log(totalCpus);
 
-
-if (cluster.isPrimary) {
-    console.log(`totalCpus: ${totalCpus}`);
-
-    for (let i = 0; i < totalCpus; i++) {
-        cluster.fork();
-    }
-
-    cluster.on("exit", (worker, code, signal) => {
-        console.log(`worker ${worker.process.pid} exited, starting a new one...`);
-        cluster.fork();
-    });
-}else{
 
     const app = express();
     app.use(cors({
         credentials: true,
-        origin: `*`
+        origin: `${ process.env.Url }`
     }))
-    console.log(process.env.Url);
 
 
     Db()
@@ -49,4 +33,3 @@ if (cluster.isPrimary) {
         console.log(`app listening on ${Port}`);
 
     })
-}
