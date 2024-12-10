@@ -4,7 +4,6 @@ import cookieParser from 'cookie-parser';
 import { UserRouter } from './Routers/User';
 import cors from 'cors'
 import { SelRoute } from './Routers/Sel';
-import session from "express-session"
 import { config } from 'dotenv';
 config()
 
@@ -15,11 +14,7 @@ app.use(cors({
 }))
 console.log(process.env.Url);
 
-app.use(session({
-    secret: `${process.env.SECRET}`,
-    resave:false,
-    saveUninitialized:true
-}))
+
 Db()
 app.use(express.json())
 app.use(cookieParser())
