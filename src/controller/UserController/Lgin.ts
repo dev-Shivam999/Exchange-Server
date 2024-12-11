@@ -34,8 +34,9 @@ export const Login = async (req: Request<{}, {}, UserLogin >, res: Response) => 
     
                 return res.cookie("token", token, {
                     httpOnly: true,
-                    expires: new Date(Date.now() + 60000 * 60000)
-                })
+                    expires: new Date(Date.now() + 60 * 100000),
+                    sameSite: 'none',
+                    secure: true   })
                       .json({ success: true, message: "user Login in  " });
             }else{
                 return res.json({ success: false, message: " password  wrong" });
