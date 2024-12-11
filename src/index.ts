@@ -15,11 +15,11 @@ config()
     const app = express();
     app.use(cors({
         credentials: true,
-        origin: "https://exchange02.netlify.app",
+        origin: `${ process.env.Url }`,
         
     }))
 
-
+    
 console.log(`${process.env.Url}`);
 
 
