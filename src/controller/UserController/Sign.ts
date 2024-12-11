@@ -51,7 +51,6 @@ export const Sign = async (req: Request<{}, {}, User>, res: Response) => {
 
             return res.cookie("token", token, {
                 httpOnly: true,
-                sameSite: true,
                 expires: new Date(Date.now() + 60000 * 60000)
             })
             .json({ success: true,message:"user crete " });

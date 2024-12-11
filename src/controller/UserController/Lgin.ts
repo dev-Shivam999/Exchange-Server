@@ -23,7 +23,6 @@ export const Login = async (req: Request<{}, {}, UserLogin >, res: Response) => 
         // Hash the password
         try {
 
-            const hash2 = bcrypt.hashSync(password, 10)
             const hash=  bcrypt.compareSync(password,existingUser.password);
 
             
@@ -35,7 +34,6 @@ export const Login = async (req: Request<{}, {}, UserLogin >, res: Response) => 
     
                 return res.cookie("token", token, {
                     httpOnly: true,
-                    sameSite: true,
                     expires: new Date(Date.now() + 60000 * 60000)
                 })
                       .json({ success: true, message: "user Login in  " });
